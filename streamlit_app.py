@@ -7,12 +7,18 @@ streamlit.title("KS Bala's Streamlit App")
 streamlit.header("Heading")
 streamlit.text("Hello! My Name is Bala Sellamuthu")
 
-simple_csv = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+fruit_csv = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
 #Indexing
-simple_csv = simple_csv.set_index("Fruit")
+fruit_csv = simple_csv.set_index("Fruit")
 
-streamlit.multiselect("Pick some fruits:", list(simple_csv.index),['Grapes', 'Apple','Avocado','Strawberries'])
+fruits_selected = streamlit.multiselect("Pick some fruits:", list(fruit_csv.index),['Grapes', 'Apple','Avocado','Strawberries'])
+
+#Filter fruits based on above list
+fruits_to_show  = fruit_csv.loc(fruits_selected)
 streamlit.dataframe(simple_csv)
+
+#Filtered list 
+streamlit.dataframe(fruits_to_show) 
 
 

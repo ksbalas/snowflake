@@ -12,7 +12,7 @@ simple_csv = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/d
 #Indexing
 simple_csv = simple_csv.set_index("Fruit")
 
-streamlit.multiselect("Pick some fruits:", list(simple_csv.index),['Apples','Grapes'])
+streamlit.multiselect("Pick some fruits:", list(simple_csv.index),['Avocado','Strawberries'])
 streamlit.dataframe(simple_csv)
 
 
